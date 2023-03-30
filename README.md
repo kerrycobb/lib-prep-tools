@@ -5,7 +5,7 @@ This repository contains some scripts that are helpful for preparing Illumina li
 `pip install git+https://github.com/kerrycobb/lib-prep-tools`
 
 ## Commands
-### illuminaSamplePrep
+### samplePrep
 Calculate how much a sample needs to be concentrated or diluted to achieve desired 
 nanoMolar concentration. Run `samplePrep --help` for guide to usage.
 
