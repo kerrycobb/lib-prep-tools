@@ -2,19 +2,21 @@
 
 import fire
 
-def calc(reqd_nanoMol, avg_insert_size, cur_ng_per_ul, reqd_vol):
-    ## reqd_nanoMol in nMol, generally need 5 nM for Illumina HiSeq and NovoSeq
-    reqd_ng_per_ul = (reqd_nanoMol / 1000000) * 660 * avg_insert_size 
+def calc(reqd_nM, avg_insert_size, cur_ng_per_ul, reqd_ul):
+    """
+    You generally need 5 nM for Illumina HiSeq and NovoSeq
+    """
+    reqd_ng_per_ul = (reqd_nM / 1000000) * 660 * avg_insert_size 
     current_mol = (cur_ng_per_ul / (660 * avg_insert_size)) * 1000000 
 
-    v1 = (reqd_vol * reqd_ng_per_ul) / cur_ng_per_ul 
-    vdif = reqd_vol - v1 
+    v1 = (reqd_ul * reqd_ng_per_ul) / cur_ng_per_ul 
+    vdif = reqd_ul - v1 
 
     print((
         "{mol} nM DNA with an average length of {len} bp is equal to " 
         "{ng} ng/\u03bcL of DNA\n"
         ).format(
-            mol=reqd_nanoMol,
+            mol=reqd_nM,
             len=avg_insert_size,
             ng=round(reqd_ng_per_ul, 3)))
 
@@ -28,11 +30,11 @@ def calc(reqd_nanoMol, avg_insert_size, cur_ng_per_ul, reqd_vol):
                 v1=round(v1, 3),
                 c1=cur_ng_per_ul,
                 vdif=round(vdif, 3),
-                v2=reqd_vol,
+                v2=reqd_ul,
                 c2=round(reqd_ng_per_ul, 3)))
     else:
         prop = cur_ng_per_ul / reqd_ng_per_ul
-        min_vol = reqd_vol / prop 
+        min_vol = reqd_ul / prop 
         print((
             "Current sample concentration is too low.\n\n"
             "Concentrate sample to a volume less than {prop} "
@@ -41,7 +43,7 @@ def calc(reqd_nanoMol, avg_insert_size, cur_ng_per_ul, reqd_vol):
             "final volume will be less than {v2} \u03bcL").format(
                 prop=round(prop, 3),
                 min_vol=round(min_vol, 3),
-                v2=reqd_vol))
+                v2=reqd_ul))
 
 if __name__ == "__main__":
     fire.Fire(calc)
