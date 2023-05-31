@@ -4,6 +4,15 @@ import fire
 import math
 
 def calc(initialConc, finalConc=10, minFinalVolume=10):
+    """
+    Caclulate how much starting material and how much water/buffer
+    are needed to acheive a desired concentration and volume
+    of DNA.
+    
+    initialConc: Starting concentration of DNA in ng/uL
+    finalConc: Desired final concentration of DNA in ng/uL
+    minFinalVolume: Minimum final volume desired
+    """
     c0 = initialConc
     cf = finalConc
     vf = minFinalVolume
