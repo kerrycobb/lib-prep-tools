@@ -6,17 +6,20 @@ This repository contains some scripts that are helpful for preparing Illumina li
 
 ## Commands
 ### samplePrep
-Calculate how much a sample needs to be concentrated or diluted to achieve desired 
-nanoMolar concentration. Run `samplePrep --help` for guide to usage.
+Calculate how much starting material and how much water/buffer are needed to achievve a desired nanomolar concentration and volume of DNA for sequencing.
+
+Run `samplePrep --help` for guide to usage.
 
 Illumina platforms typically require samples to be at 5 nanoMolar concentrations.
 
 ### dilutionCalc
-Calculate volume of solution to add to sample to achieve desired concentration.
+Calculate how much starting material and how much water/buffer are needed to achieve a desired concentration and volume of DNA.
+
 Run `dilutionCalc --help` for guide to usage.
 
 ### molToNg
-Calculate minimum DNA concentration required to reach required nanoMolar concentration.
+Calculate the concentration of DNA needed to achieve a desired molarity.
+
 Run `molarityCalc --help` for guide to usage.
 
 

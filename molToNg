@@ -4,7 +4,7 @@ import fire
 
 def calc(requiredMolarity, meanInsertSize):
     """
-    Calculate the concentration of DNA needed to acheive a desired molarity.
+    Calculate the concentration of DNA needed to achieve a desired molarity.
 
     requiredMolarity:  nanomoles required 
     meanInsertSize:    mean number base pairs of DNA

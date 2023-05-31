@@ -4,8 +4,8 @@ import fire
 
 def calc(required_nM, avg_insert_size, current_ng_per_ul, required_ul):
     """
-    Caclulate how much starting material and how much water/buffer
-    are needed to acheive a desired concentration and volume
+    Calculate how much starting material and how much water/buffer
+    are needed to achieve a desired concentration and volume
     of DNA for sequencing.
 
     You generally need 5 nM for Illumina HiSeq and NovoSeq.
