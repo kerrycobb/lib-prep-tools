@@ -10,7 +10,7 @@ setup(
     license="MIT",
     requires=["fire"],
     scripts=[
-        "dilutionCalc",
-        "molToNg",
-        "samplePrep"]
+        "dilutionCalc.py",
+        "molToNg.py",
+        "samplePrep.py"]
 )
