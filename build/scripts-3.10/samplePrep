@@ -1,0 +1,59 @@
+#!python
+
+import fire
+
+def calc(required_nM, avg_insert_size, current_ng_per_ul, required_ul):
+    """
+    Caclulate how much starting material and how much water/buffer
+    are needed to acheive a desired concentration and volume
+    of DNA for sequencing.
+
+    You generally need 5 nM for Illumina HiSeq and NovoSeq.
+
+    required_nM:        Desired molarity of DNA measured in nanomoles
+    ave_insert_size:    Average length of DNA measured in base pairs
+    current_ng_per_ul:  Current concentration of DNA measured in ng/\u03bcL
+    required_ul:        Desired final volume of DNA
+
+    """
+    required_ng_per_ul = (required_nM / 1000000) * 660 * avg_insert_size 
+    current_mol = (current_ng_per_ul / (660 * avg_insert_size)) * 1000000 
+
+    v1 = (required_ul * required_ng_per_ul) / current_ng_per_ul 
+    vdif = required_ul - v1 
+
+    print((
+        "{mol} nM DNA with an average length of {len} bp is equal to " 
+        "{ng} ng/\u03bcL of DNA\n"
+        ).format(
+            mol=required_nM,
+            len=avg_insert_size,
+            ng=round(required_ng_per_ul, 3)))
+
+    print("Sample is currently at {mol} nM\n".format(mol=round(current_mol, 3)))
+
+    if vdif >= 0:
+        print((
+            "Dilute {v1} \u03bcL of {c1} ng/\u03bcL DNA with {vdif} "
+           "\u03bcL of solution to get {v2} \u03bcL of {c2} ng/\u03bcL of DNA"
+            ).format(
+                v1=round(v1, 3),
+                c1=current_ng_per_ul,
+                vdif=round(vdif, 3),
+                v2=required_ul,
+                c2=round(required_ng_per_ul, 3)))
+    else:
+        prop = current_ng_per_ul / required_ng_per_ul
+        min_vol = required_ul / prop 
+        print((
+            "Current sample concentration is too low.\n\n"
+            "Concentrate sample to a volume less than {prop} "
+            "times the current volume and requantify.\n\n"
+            "Current volume must be at least {min_vol} \u03bcL or "
+            "final volume will be less than {v2} \u03bcL").format(
+                prop=round(prop, 3),
+                min_vol=round(min_vol, 3),
+                v2=required_ul))
+
+if __name__ == "__main__":
+    fire.Fire(calc)

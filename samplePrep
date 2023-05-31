@@ -10,10 +10,10 @@ def calc(required_nM, avg_insert_size, current_ng_per_ul, required_ul):
 
     You generally need 5 nM for Illumina HiSeq and NovoSeq.
 
-    required_nM: Desired molarity of DNA measured in nanomoles
-    ave_insert_size: Average length of DNA measured in base pairs
-    current_ng_per_ul: Current concentration of DNA measured in ng/\u03bcL
-    required_ul: Desired final volume of DNA
+    required_nM:        Desired molarity of DNA measured in nanomoles
+    ave_insert_size:    Average length of DNA measured in base pairs
+    current_ng_per_ul:  Current concentration of DNA measured in ng/\u03bcL
+    required_ul:        Desired final volume of DNA
 
     """
     required_ng_per_ul = (required_nM / 1000000) * 660 * avg_insert_size 

@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: lib-prep-tools
+Version: 1.0
+Summary: Some command line tools to aid in preparing genomic libraries
+Home-page: http://github.com/kerrycobb/lib_prep_tools
+Author: Kerry A Cobb
+Author-email: cobbkerry@gmail.com
+License: MIT
+Requires: fire

@@ -9,9 +9,9 @@ def calc(initialConc, finalConc=10, minFinalVolume=10):
     are needed to acheive a desired concentration and volume
     of DNA.
     
-    initialConc: Starting concentration of DNA in ng/uL
-    finalConc: Desired final concentration of DNA in ng/uL
-    minFinalVolume: Minimum final volume desired
+    initialConc:     Starting concentration of DNA in ng/uL
+    finalConc:       Desired final concentration of DNA in ng/uL
+    minFinalVolume:  Minimum final volume desired
     """
     c0 = initialConc
     cf = finalConc
